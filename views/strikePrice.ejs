@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>  
+        var cdata = '<%- JSON.stringify(data) %>'
+        cdata = JSON.parse(cdata)
+        chartdataCE = []
+        chartlabelsCE = []
+        chartdataPE = []
+        chartlabelsPE = []
+        for(let i =0;i<cdata.length;i++)
+        {
+            if(cdata[i].strike.includes('PE'))
+            {
+                if(!chartlabelsPE.includes(cdata[i].time))
+                {
+                    let c;
+                    if(cdata[i].change < 0){
+                        c = cdata[i].change
+                     }else
+                    {
+                        c = cdata[i].change 
+                    }
+                    chartdataPE.push(c)
+                    chartlabelsPE.push(cdata[i].time)
+                }
+                
+            }else{
+                if(!chartlabelsCE.includes(cdata[i].time))
+                {
+                    let c;
+                    if(cdata[i].change < 0){
+                        c = cdata[i].change
+                     }else
+                    {
+                        c = cdata[i].change 
+                    }
+                    chartdataCE.push(c)
+                    chartlabelsCE.push(cdata[i].time)
+                }
+                
+            }
+         
+        }
+        console.log(chartlabelsPE)
+        console.log(chartlabelsCE)
+        function renderChart(chartName,clabel,data, labels,color) {
+        var ctx = document.getElementById(chartName).getContext('2d');
+        var myChart = new Chart(ctx, {
+        type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: clabel,
+                        data: data,
+                        borderColor: color,
+                        fill:false,
+                        backgroundColor:color
+                    }]
+                },
+            });
+        }
+
+        function renderChartCombined(chartName,clabel,cedata, celabels,cecolor,plabel,pedata,pelabel,pecolor) {
+        var ctx = document.getElementById(chartName).getContext('2d');
+        var myChart = new Chart(ctx, {
+        type: 'line',
+                data: {
+                    labels: celabels,
+                    datasets: [{
+                        label: clabel,
+                        data: cedata,
+                        borderColor: cecolor,
+                        fill:false
+                    },
+                    {
+                        label: plabel,
+                        data: pedata,
+                        borderColor: pecolor,
+                        fill:false
+                    }
+                    
+                ]
+                },
+            });
+        }
+
+        function renderChartCombinedBar(chartName,clabel,cedata, celabels,cecolor,plabel,pedata,pelabel,pecolor) {
+        var ctx = document.getElementById(chartName).getContext('2d');
+        var myChart = new Chart(ctx, {
+        type: 'bar',
+                data: {
+                    labels: celabels,
+                    datasets: [{
+                        label: clabel,
+                        data: cedata,
+                        borderColor: cecolor,
+                        backgroundColor:cecolor
+                        // fill:false
+                    },
+                    {
+                        label: plabel,
+                        data: pedata,
+                        borderColor: pecolor,
+                        backgroundColor:pecolor,
+                        // fill:false
+                    }
+                    
+                ]
+                },
+            });
+        }
+
+        // renderChart('myChartCE','CE',chartlabelsCE,chartdataCE)
+
+        window.onload = function(){ 
+            renderChart('myChartCE','CE',chartdataCE,chartlabelsCE,'lightGreen')
+            renderChart('myChartPE','PE',chartdataPE,chartlabelsPE,'tomato')
+            renderChartCombined('myChartCEPE','CE',chartdataCE,chartlabelsCE,'lightGreen','PE',chartdataPE,chartlabelsPE,'tomato')
+            renderChartCombinedBar('myChartCEPEA','CE',chartdataCE,chartlabelsCE,'lightGreen','PE',chartdataPE,chartlabelsPE,'tomato')
+        }        
+        
+    </script> 
+
+    <title><%=strikePrice%></title>
+    
+</head>
+<style>
+    .container {
+        display: inline-block;
+        width: 50%;
+        height: 20%;
+    }
+    .containerA{
+        display: inline-block;
+        width: 50%;
+        height: 20%;
+    }
+    .containercombined{
+        float: right;
+        width: 50%;
+        height: 20%;
+    }
+    .containercombinedA{
+        float: right;
+        width: 50%;
+        height: 20%;
+    }
+    .label{
+        margin-top:10px;
+        margin-left:50%;
+        font-weight:bolder;
+        font-size:xx-large 
+    }
+
+</style>
+<body>
+    <span>
+    <button id="back" onClick = "window.history.back()">
+        Back 
+    </button>
+    <span class="label"> 
+        <%=strikePrice%> - Comparision
+    </span>
+    </span>
+    <span>
+    <div class="container">
+        <canvas id="myChartCE"></canvas>
+    </div>
+    <div class="containercombined">
+        <canvas id="myChartCEPE"></canvas>
+    </div>
+    <div class="containerA">
+        <canvas id="myChartPE"></canvas>
+    </div>
+    <div class="containercombinedA">
+        <canvas id="myChartCEPEA"></canvas>
+    </div>
+    
+    </span>
+    
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+</html>

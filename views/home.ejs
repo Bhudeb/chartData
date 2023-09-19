@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/style.css" rel="stylesheet" type="text/css">
+  <title><%= title %></title>
+  <script>
+    // document.getElementById('timer').innerText = '3:00';
+    // Define a function to reload the page
+    function reloadPage() {
+            location.reload();
+        }
+    function c_color(){
+          window.onload = function(){
+            let trs = document.getElementsByTagName('tr')
+            trs[27].style.fontWeight = 'bold'
+            let cetr = document.getElementsByTagName('td')
+            var map = new Map();
+            map.set(72,parseFloat(cetr[72].innerText));
+            map.set(81,parseFloat(cetr[81].innerText));   
+            map.set(90,parseFloat(cetr[90].innerText));   
+            map.set(99,parseFloat(cetr[99].innerText));   
+            map.set(108,parseFloat(cetr[108].innerText));   
+            map.set(117,parseFloat(cetr[117].innerText)); 
+            map.set(126,parseFloat(cetr[126].innerText));   
+            map.set(135,parseFloat(cetr[135].innerText));   
+            map.set(144,parseFloat(cetr[144].innerText));   
+            const mapSort = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+            let highestCEoi1 =  Array.from(mapSort)[0][0];
+            let highestCEoi2 =  Array.from(mapSort)[1][0];
+            cetr[highestCEoi1].classList.add('blinkResistance')
+            cetr[highestCEoi2].classList.add('blinkResistance2')
+
+            
+            var map = new Map();
+            map.set(8,parseFloat(cetr[8].innerText));
+            map.set(17,parseFloat(cetr[17].innerText));
+            map.set(26,parseFloat(cetr[26].innerText));
+            map.set(35,parseFloat(cetr[35].innerText));   
+            map.set(44,parseFloat(cetr[44].innerText));   
+            map.set(53,parseFloat(cetr[53].innerText));   
+            map.set(62,parseFloat(cetr[62].innerText));  
+            map.set(71,parseFloat(cetr[71].innerText));  
+            map.set(80,parseFloat(cetr[80].innerText));  
+            const mapSort2 = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+            let highestPEoi1 =  Array.from(mapSort2)[0][0];
+            let highestPEoi2 =  Array.from(mapSort2)[1][0];
+            cetr[highestPEoi1].classList.add('blinkSupport')
+            cetr[highestPEoi2].classList.add('blinkSupport2')
+            let supports = []
+            let resistances = []
+            document.getElementsByClassName('R2')[0].innerText = cetr[highestCEoi1+4].innerText
+            document.getElementsByClassName('R1')[0].innerText = cetr[highestCEoi2+4].innerText
+            document.getElementsByClassName('S1')[0].innerText = cetr[highestPEoi1-4].innerText
+            document.getElementsByClassName('S2')[0].innerText = cetr[highestPEoi2-4].innerText
+    
+
+            if(highestCEoi1+4 == highestPEoi1-4)
+            {
+              cetr[highestCEoi1+4].classList.add('sameSR')
+            }else{
+              cetr[highestCEoi1+4].classList.add('strikeResistance')
+              cetr[highestPEoi1-4].classList.add('strikeSupport')
+              cetr[highestCEoi2+4].classList.add('strikeResistance2')
+              cetr[highestPEoi2-4].classList.add('strikeSupport2')
+            }
+            
+
+            var map = new Map();
+            for(let i=7;i<=79;i=i+9)
+            {
+              map.set(i,parseFloat(cetr[i].innerText));
+            }
+            const mapSort3 = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+            console.log(mapSort3)
+            let highestchangeoiCE1 =  Array.from(mapSort3)[0][0];
+            let highestchangeoiCE2 =  Array.from(mapSort3)[1][0];
+            cetr[highestchangeoiCE1].classList.add('blinkchangeOISupport')
+            cetr[highestchangeoiCE2].classList.add('blinkchangeOISupport2')
+
+            var map = new Map();
+            for(let i=73;i<=145;i=i+9)
+            {
+              map.set(i,parseFloat(cetr[i].innerText));
+            }
+            const mapSort4 = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+            let highestchangeoiPE1 =  Array.from(mapSort4)[0][0];
+            let highestchangeoiPE2 =  Array.from(mapSort4)[1][0];
+            cetr[highestchangeoiPE1].classList.add('blinkchangeOIResistance')
+            cetr[highestchangeoiPE2].classList.add('blinkchangeOIResistance2')
+
+            
+            let cetd = document.getElementsByTagName('td')
+            
+            for(let i=2; i<=146; i=i+9)
+            {
+              if(cetd[i].innerText < 0){
+                cetd[i].classList.add('negetive')
+              }else{
+                cetd[i].classList.add('positive')
+              }
+            }
+
+            for(let i=6; i<=150; i=i+9)
+            {
+              if(cetd[i].innerText < 0){
+                cetd[i].classList.add('negetive')
+              }else{
+                cetd[i].classList.add('positive')
+              }
+            }
+            countdown();
+            startTimer();
+            
+
+
+          };
+      }
+      c_color();      
+
+      function countdown() {
+        setTimeout(poll, 1000);
+      
+      }
+      function poll(){
+        console.log('Timreout')
+      }
+      
+      
+      function startTimer() {
+            var presentTime = document.getElementById('timer').innerText;
+            var timeArray = presentTime.split(/[:]+/);
+            var m = timeArray[0];
+            var s = checkSecond((timeArray[1] - 1));
+            if (s == 59) { m = m - 1 };
+            if (m < 0) {
+                location.reload()
+                return;
+            }
+            if (s < 10 && m == "00") {
+                document.getElementById("clicable1").disabled = true;
+                document.getElementById("clicable2").disabled = true;
+                document.getElementById("insert").disabled = true;
+            }
+
+            document.getElementById('timer').innerHTML = m + ":" + s;
+            setTimeout(startTimer, 1000);
+        }
+
+        function checkSecond(sec) {
+            if (sec < 10 && sec >= 0) { sec = "0" + sec };
+            if (sec < 0) { sec = "59" };
+            return sec;
+        }
+      // const reloadInterval = setInterval(reloadPage, 186000);    
+  </script>
+</head>
+<body>
+  <span class="calls"> CALLS</span><span class="timer">Refreshing in:</span><span id="timer" class="time">3:00</span><span class="puts"> PUTS</span>
+  <div class="table-wrapper">
+    <table class="fl-table">
+      <tr>
+        <th>OI</th>
+        <th>Change OI</th>
+        <th>Change</th>
+        <th>Vol</th>
+        <th class="strike">Strike</th>
+        <th>Vol</th>
+        <th>Change</th>
+        <th>Change OI</th>
+        <th>OI</th>
+      </tr>
+    
+        <% message.forEach(function (item){  %>
+          <tr>
+            <tr  ></tr>
+          <td> <%= (item.CE.openInterest/100000).toFixed(2) %> </td>
+          <td> <%= (item.CE.changeinOpenInterest/100000).toFixed(2) %> </td>
+          <td> <%= item.CE.change.toFixed(2) %> </td>
+          <td> <%= (item.CE.totalTradedVolume/100000).toFixed(2) %> </td>
+          <td class="strike"> <a href=" <%='/strikePrice/'+item.PE.strikePrice %>"> <%= item.PE.strikePrice %> </a></td>
+          <td> <%= (item.PE.totalTradedVolume/100000).toFixed(2) %> </td>
+          <td> <%= item.PE.change.toFixed(2) %> </td>
+          <td> <%= (item.PE.changeinOpenInterest/100000).toFixed(2)  %> </td>
+          <td> <%= (item.PE.openInterest/100000).toFixed(2) %> </td>
+        </tr>
+      <% }) %>
+    </table>
+</div>
+<%- include('spotPrice') %>
+<div class="spotPrice">SPOT PRICE - <%= spotPrice %></div>
+<div class="SRText">
+<div class="R2label">Resistance 2:   <span class="R2"></span></div>
+<div class="R1label">Resistance 1:   <span class="R1"></span></div>
+<div class="S1label">Support 1:      <span class="S1"></span></div>
+<div class="S2label">Support 2:      <span class="S2"></span></div>
+</div>
+<div>
+  <form action="/" method="POST">
+    <input type="text" name="spotPrice">
+    <button type="submit" class="btn btn-danger btn-sm">Submit</button>
+    
+</form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body{
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
+    background: rgba( 71, 147, 227, 1);
+}
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 30px 0;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: normal;
+    border:#324960;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 10px;
+}
+
+.fl-table td {
+    border-right: 1px solid #230404;
+    font-size: 20px;
+}
+
+.fl-table thead{
+    color: #ffffff;
+    background: #4FC3A1;
+
+}
+
+th {
+    color: #a43e3e;
+    background: #10e0a1;
+}
+
+.strike {
+    background: #dcebbbaf;
+}
+
+.blinkSupport{
+    background-color: hsl(176, 72%, 25%);
+    animation: blinkSupport 1s linear infinite;
+}
+
+@keyframes blinkSupport {
+0%{color: hsl(176, 75%, 39%);}
+50%{color: black;}
+100%{color: hsl(176, 75%, 39%);}
+}
+
+.blinkchangeOISupport{
+    background-color: hsl(64, 60%, 35%);
+    animation: blinkchangeOISupport 1s linear infinite;
+}
+
+@keyframes blinkchangeOISupport {
+0%{color: hsl(64, 60%, 35%);}
+50%{color: black;}
+100%{color: hsl(64, 60%, 35%);}
+}
+
+.blinkchangeOISupport2{
+    background-color: hsl(64, 74%, 73%);
+    animation: blinkchangeOISupport2 1s linear infinite;
+}
+
+@keyframes blinkchangeOISupport2 {
+0%{color: hsl(64, 74%, 73%)}
+50%{color: black;}
+100%{color: hsl(64, 74%, 73%)}
+}
+
+.blinkchangeOIResistance{
+    background-color: hsl(307, 67%, 52%);
+    animation: blinkchangeOIResistance 1s linear infinite;
+}
+
+@keyframes  blinkchangeOIResistance{
+0%{color: hsl(307, 67%, 52%);}
+50%{color: black;}
+100%{color: hsl(307, 67%, 52%);}
+}
+
+.blinkchangeOIResistance2{
+    background-color: hsl(306, 41%, 80%);
+    animation: blinkchangeOIResistance2 1s linear infinite;
+}
+
+@keyframes blinkchangeOIResistance2 {
+0%{color: hsl(306, 41%, 80%)}
+50%{color: black;}
+100%{color: hsl(306, 41%, 80%)}
+}
+
+
+.blinkSupport2{
+    background-color: hsl(176, 48%, 69%);
+    animation: blinkSupport2 1s linear infinite;
+}
+
+@keyframes blinkSupport2 {
+0%{color: hsl(176, 48%, 69%)}
+50%{color: black;}
+100%{color: hsl(176, 48%, 69%)}
+}
+
+.blinkResistance{
+    background-color: tomato;
+    animation: blinkResistance 1s linear infinite;
+}
+
+@keyframes blinkResistance {
+0%{color: tomato;}
+50%{color: rgb(10, 10, 10);}
+100%{color: tomato;}
+}
+
+.blinkResistance2{
+    background-color: rgb(204, 158, 123);
+    animation: blinkResistance2 1s linear infinite;
+}
+
+@keyframes blinkResistance2 {
+0%{color: rgb(211, 178, 153)}
+50%{color: black;}
+100%{color: rgb(211, 178, 153)}
+}
+
+.sameSR{
+    background: url('./sr.png') no-repeat right;
+    
+    background-size: 30px;
+    animation-duration: 1000ms;
+    animation-name: sSR;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+ @keyframes sSR {
+    from {
+       color: tomato;
+    }
+    to {
+       color: green;
+    }
+}
+
+.strikeSupport{
+    background: url('./s.png') no-repeat left;
+    background-size: 20px;
+    animation-duration: 1000ms;
+    animation-name: sS;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+ @keyframes sS {
+    from {
+       color: #000;
+    }
+    to {
+       color: green;
+    }
+}
+
+.strikeSupport2{
+    background: url('./S1.png') no-repeat left;
+    background-size: 22px;
+}
+.strikeResistance2{
+    background: url('./R1.png') no-repeat right;
+    background-size: 22px;
+}
+.strikeResistance{
+    background: url('./r.png') no-repeat right;
+    background-size: 20px;
+    animation-duration: 1000ms;
+    animation-name: sR;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+ @keyframes sR {
+    from {
+       color: #000;
+    }
+    to {
+       color: tomato
+    }
+}
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #277bc8;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #dbe2bb;
+}
+
+.calls{
+    margin-left: 430px;
+    font-weight: bold;
+}
+
+.puts{
+    margin-left: 390px;
+    font-weight: bold;
+}
+
+.negetive{
+    color: red;
+}
+.SRText{
+    margin-left: 45%;
+    font-weight: bolder;
+}
+
+.R2label{
+    color: #c10000;
+    margin-bottom: 5px;
+    font-size: x-large;
+}
+
+.R1label{
+    color: rgb(197, 34, 34);
+    margin-bottom: 10px;
+    font-size: x-large;
+}
+
+.S1label{
+    color: greenyellow;
+    margin-bottom: 5px;
+    font-size: x-large;
+
+}
+
+.S2label{
+    color: #2d4a01;
+    font-size: x-large;
+    
+}
+
+.spotPrice{
+    margin-left: 200px;
+    color: #1d23d7;
+    font-size: x-large;
+    font-weight: bold;
+    animation: spotPrice 1s linear infinite;
+}
+
+
+@keyframes spotPrice {
+0%{color: rgb(114, 209, 12);}
+25%{color: rgb(16, 193, 209);}
+50%{color: rgb(208, 18, 18);}
+75%{color: rgb(119, 33, 123);}
+100%{color: tomato;}
+}
+
+
+.positive{
+    color: green;
+}
+.timer{
+    margin-left: 320px;
+    color: White;
+    font-weight: bold;
+}
+.time{
+    margin-left: 10px; 
+    color: White;
+    font-weight: bold;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
